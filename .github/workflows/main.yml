@@ -55,7 +55,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # עדכון אוטומטי של תגית ה-Image בקובץ המניפסט בתיקייה הנכונה
           sed -i 's|image: ghcr.io/.*|image: ghcr.io/${{ github.repository }}:${{ steps.image_tag.outputs.TAG }}|g' manifest/deployment.yaml
 
           git add manifest/deployment.yaml
