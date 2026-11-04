@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/yakiradela/gitops.git'
-    targetRevision: HEAD
-    path: manifests
+  repoURL: 'https://github.com/yakiradela/gitops.git'
+  targetRevision: HEAD
+  path: manifest
   destination:
     server: https://kubernetes.default.svc
     namespace: default
