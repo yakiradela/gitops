@@ -105,3 +105,15 @@ resource "helm_release" "ingress_nginx" {
     value = "NoSchedule"
   }
 }
+
+# התקנת Argo CD דרך Helm
+resource "helm_release" "argocd" {
+  name             = "argocd"
+  repository       = "https://argoproj.github.io/argo-helm"
+  chart            = "argo-cd"
+  version          = "5.51.6"
+  namespace        = "argocd"
+  create_namespace = true
+  timeout          = 600
+  wait             = false
+}
