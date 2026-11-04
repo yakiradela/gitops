@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: ghcr.io/yakiradela/my-gitops-app:v1.0.0
+        image: ghcr.io/yakiradela/gitops:sha-ad67eb3f662b684407cab961863eb4288c1abd84
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
