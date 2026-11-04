@@ -38,8 +38,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: .
-          file: ./Dockerfile
+          context: ./Docker
+          file: ./Docker/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -55,9 +55,9 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # עדכון התגית בקובץ manifests/deployment.yaml אוטומטית
-          sed -i 's|image: ghcr.io/.*|image: ghcr.io/${{ github.repository }}:${{ steps.image_tag.outputs.TAG }}|g' manifests/deployment.yaml
+          # עדכון אוטומטי של תגית ה-Image בקובץ המניפסט בתיקייה הנכונה
+          sed -i 's|image: ghcr.io/.*|image: ghcr.io/${{ github.repository }}:${{ steps.image_tag.outputs.TAG }}|g' manifest/deployment.yaml
 
-          git add manifests/deployment.yaml
+          git add manifest/deployment.yaml
           git commit -m "CI: Update image tag to ${{ steps.image_tag.outputs.TAG }}"
           git push origin main
